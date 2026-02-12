@@ -1,0 +1,6 @@
+# tudo que eu preciar instalar para usar meu projeyo vai estar aqui
+flask
+mysql-connector-python
+
+
+
