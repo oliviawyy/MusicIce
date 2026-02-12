@@ -16,7 +16,13 @@ def principal():
         database="MusicTube"
     )
 
+    # criando o cursor 
     cursor = conexao.cursor(dictionary=True)
+
+    # executando a conssulta
+    cursor.execute("select codigo, cantor, duracao, nome, url_imagem, nome_genero from musica;")
+
+    
     return render_template("principal.html")
 
 
