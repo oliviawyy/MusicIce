@@ -22,8 +22,13 @@ def principal():
     # executando a conssulta
     cursor.execute("select codigo, cantor, duracao, nome, url_imagem, nome_genero from musica;")
 
-    
-    return render_template("principal.html")
+    # recuperando os dados 
+    musicas = cursor.fetchall()
+
+    # fechando a conexao
+    conexao.close()
+
+    return render_template("principal.html", musicas = musicas)
 
 
 if __name__=="__main__":
