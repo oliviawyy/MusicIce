@@ -25,10 +25,16 @@ def principal():
     # recuperando os dados 
     musicas = cursor.fetchall()
 
+    # executando a consulta do genero
+    cursor.execute("SELECT nome, icone, cor from genero;")
+
+    # recuperando o generpo
+    generos = cursor.fetchall()
+
     # fechando a conexao
     conexao.close()
 
-    return render_template("principal.html", musicas = musicas)
+    return render_template("principal.html", musicas = musicas, generos = generos )
 
 
 if __name__=="__main__":
