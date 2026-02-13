@@ -18,12 +18,12 @@ INSERT INTO `musictube`.`musica`
 `nome_genero`)
 VALUES
 ("KISS",
-"03:58",
+"00:03:58",
 "I Was Made For Lovin' You",
 "https://whiplash.net/imagens_promo_22/kiss_casablanca.jpg?nocache",
 "Rock"),
 ("Ace of Base",
-"03:31",
+"00:03:31",
 "Happy Nation",
 "https://akamai.sscdn.co/uploadfile/letras/fotos/0/f/a/7/0fa73657275360ff70663e64f6b310cc.jpg",
 "Pop");
