@@ -1,4 +1,3 @@
-
 use MusicTube;
 INSERT INTO `musictube`.`genero`
 (`nome`,
@@ -26,6 +25,9 @@ VALUES
 "00:03:31",
 "Happy Nation",
 "https://akamai.sscdn.co/uploadfile/letras/fotos/0/f/a/7/0fa73657275360ff70663e64f6b310cc.jpg",
-"Pop");
-
-
+"Pop"),
+("Claudinho e Buchecha",
+"00:04:09",
+"Quero te encontrar",
+"https://billboard.com.br/wp-content/uploads/2023/09/claudinho-e-buchecha-foto-jpg.webp",
+"MPB");
