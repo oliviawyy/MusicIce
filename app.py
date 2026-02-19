@@ -19,7 +19,9 @@ def principal():
 @app.route("/admin")
 def pagina_admin():
     musicas = recuperar_musicas()
-    return render_template("administracao.html", musicas = musicas)
+    # recuperando os generos 
+    generos = recuperar_generos()
+    return render_template("administracao.html", musicas = musicas, generos = generos )
 
 if __name__=="__main__":
     app.run(debug=True)
