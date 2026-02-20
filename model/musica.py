@@ -38,5 +38,6 @@ def salvar_musica(cantor:str, nome_musica:str, duracao:str, imagem:str, genero:s
 
         return True
     
-    except:
+    except Exception as erro:
+        print(erro)
         return False
