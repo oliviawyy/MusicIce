@@ -17,19 +17,26 @@ def salvar_musica(cantor:str, nome_musica:str, duracao:str, imagem:str, genero:s
     """
     eu adiciono a sua musica no banco de dados
     """
-    # conectando ao banco
-    conexao, cursor = conectar()
 
-    # executar insert
-    cursor.execute("""
-                        INSERT INTO musica
-                            (cantor, nome, duracao, img_capa, nome_genero)
-                        VALUES
-                            (%s, %s, %s, %s, %s);
-                    """,
-                    [cantor, nome_musica, duracao, imagem, genero]
-                    )
+    try:
+        # conectando ao banco
+        conexao, cursor = conectar()
+
+        # executar insert
+        cursor.execute("""
+                            INSERT INTO musica
+                                (cantor, nome, duracao, img_capa, nome_genero)
+                            VALUES
+                                (%s, %s, %s, %s, %s);
+                        """,
+                        [cantor, nome_musica, duracao, imagem, genero]
+                        )
+        
+        conexao.commit()
+        
+        conexao.close()
+
+        return True
     
-    conexao.commit()
-    
-    conexao.close()
+    except:
+        return False
