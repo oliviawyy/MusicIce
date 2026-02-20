@@ -13,7 +13,7 @@ INSERT INTO `musictube`.`musica`
 (`cantor`,
 `duracao`,
 `nome`,
-`url_imagem`,
+`img_capa`,
 `nome_genero`)
 VALUES
 ("KISS",

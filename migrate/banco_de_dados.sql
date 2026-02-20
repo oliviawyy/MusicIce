@@ -2,7 +2,7 @@ CREATE DATABASE IF NOT EXISTS MusicTube;
 USE musictube;
 CREATE TABLE IF NOT EXISTS genero (
     nome VARCHAR(30) NOT NULL PRIMARY KEY,
-    url_imagem VARCHAR(255),
+    icone VARCHAR(255),
     cor VARCHAR(30)
 );
 CREATE TABLE IF NOT EXISTS musica (
