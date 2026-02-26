@@ -64,4 +64,12 @@ def excluir_musica(codigo:int) -> bool:
         print(erro)
         return False
 
-# def ativar_musica(codigo:int, status:bool)
+def alterar_musica(codigo:int, status:bool):
+    """ essa funcao serve para alterar"""
+    try:
+        conexao, cursor = conectar()
+
+        cursor.execute("""
+        UPDATE musica
+        SET ativo = %s
+        WHERE CODIGO = %s""")
