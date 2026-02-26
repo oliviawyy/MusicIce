@@ -4,7 +4,7 @@ def recuperar_musicas():
     #passo 1 e 2 já feito
     conexao, cursor = conectar()
 
-    cursor.execute("SELECT codigo, cantor, duracao, nome, img_capa, nome_genero FROM musica;")
+    cursor.execute("SELECT codigo, cantor, duracao, nome, img_capa, nome_genero, ativo FROM musica;")
 
     musicas = cursor.fetchall()
 
@@ -43,11 +43,25 @@ def salvar_musica(cantor:str, nome_musica:str, duracao:str, imagem:str, genero:s
         return False
     
 
-def excluir_musica():
+def excluir_musica(codigo:int) -> bool:
     """Essa função serve para excluir a musica"""
     try:
         conexao, cursor = conectar()
 
         cursor.execute("""
-    DELETE FROM 
-                       """)
+        DELETE FROM musica
+        WHERE codigo = %s
+                       
+        """, 
+        [codigo])
+        conexao.commit()
+
+        conexao.close()
+
+        return True
+
+    except Exception as erro:
+        print(erro)
+        return False
+
+# def ativar_musica(codigo:int, status:bool)
