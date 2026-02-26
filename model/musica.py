@@ -41,3 +41,13 @@ def salvar_musica(cantor:str, nome_musica:str, duracao:str, imagem:str, genero:s
     except Exception as erro:
         print(erro)
         return False
+    
+
+def excluir_musica():
+    """Essa função serve para excluir a musica"""
+    try:
+        conexao, cursor = conectar()
+
+        cursor.execute("""
+    DELETE FROM 
+                       """)

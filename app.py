@@ -3,7 +3,6 @@ import mysql.connector
 from model.musica import recuperar_musicas, salvar_musica
 from model.genero import recuperar_generos
 
-
 app = Flask(__name__)
 
 @app.route("/home", methods=["GET"])
@@ -30,11 +29,15 @@ def api_inserir_musica():
     cantor = request.form.get("input_cantor")
     nome_musica = request.form.get("input_musica")
     duracao = request.form.get("input_duracao")
-    genero = request.form.get("select_genero")
-    if salvar_musica(cantor,nome_musica,duracao,genero):
+    imagem = request.form.get("input_imagem")
+    nome_genero = request.form.get("select_genero")
+    if salvar_musica(cantor,nome_musica,duracao,imagem,nome_genero):
         return redirect("/admin")
     else:
         return "ERRO AO ADICIONAR MÚSICA"
+
+@app.route("/excluir_musica", met)
+
 
 if __name__=="__main__":
     app.run(debug=True)
