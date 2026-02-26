@@ -72,4 +72,17 @@ def alterar_musica(codigo:int, status:bool):
         cursor.execute("""
         UPDATE musica
         SET ativo = %s
-        WHERE CODIGO = %s""")
+        WHERE CODIGO = %s
+        """,
+        [status,codigo])
+        conexao.commit()
+
+        conexao.close()
+
+        return True
+
+    except Exception as erro:
+        print(erro)
+        return False
+
+    
