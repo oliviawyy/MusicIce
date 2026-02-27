@@ -3,6 +3,7 @@ import mysql.connector
 from model.musica import recuperar_musicas, salvar_musica
 from model.genero import recuperar_generos
 from model.musica import excluir_musica
+from model.musica import alterar_musica
 
 app = Flask(__name__)
 
@@ -11,7 +12,7 @@ app = Flask(__name__)
 def principal():
     
     # recuperando os dados 
-    musicas = recuperar_musicas()
+    musicas = recuperar_musicas(True)
 
     # recuperando o generpo
     generos = recuperar_generos()
@@ -46,6 +47,11 @@ def deletar_musica(codigo):
 
     else:
         return ""
+
+@app.route("/musica/ativar/<codigo>/<status>")
+def mudar_status_musica(codigo,status):
+    alterar_musica(codigo, status)
+    return redirect("/admin")
 
 
 
