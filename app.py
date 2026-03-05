@@ -65,5 +65,9 @@ def rota_cadastrar():
     cadastro_usuario(usuario, senha)
     return redirect("/cadastro")
 
+@app.route("/login")
+def pagina_login():
+    return render_template("login.html")
+
 if __name__=="__main__":
     app.run(debug=True)
