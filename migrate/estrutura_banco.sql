@@ -30,7 +30,7 @@ VALUES
 "00:04:09",
 "Quero te encontrar",
 "https://billboard.com.br/wp-content/uploads/2023/09/claudinho-e-buchecha-foto-jpg.webp",
-"MPB");
+"MPB"),
 ("Keyshia Cole",
 "00:05:11",
 "Love",
