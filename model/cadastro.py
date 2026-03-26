@@ -1,6 +1,6 @@
 from database.conexao import conectar
 
-def cadastro_usuario(usuario:str, senha:str):
+def cadastro_usuario(usuario:str, senha:str)-> list:
     """
     cadastrando o usuario
     """
@@ -18,7 +18,6 @@ def cadastro_usuario(usuario:str, senha:str):
                         """,
                         [usuario, senha]
                         )
-        
         conexao.commit()
         
         conexao.close()
@@ -29,4 +28,3 @@ def cadastro_usuario(usuario:str, senha:str):
         print(erro)
         return False
     
-

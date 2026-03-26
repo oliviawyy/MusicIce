@@ -1,12 +1,15 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session, flash
 import mysql.connector
 from model.musica import recuperar_musicas, salvar_musica
 from model.genero import recuperar_generos
 from model.musica import excluir_musica
 from model.musica import alterar_musica
-from model.usuario import cadastro_usuario
+from model.cadastro import cadastro_usuario
+from model.login import verificar_usuario
 
 app = Flask(__name__)
+
+app.secret_key = "oliviawyy"
 
 @app.route("/home", methods=["GET"])
 @app.route("/")
@@ -21,12 +24,15 @@ def principal():
 
 @app.route("/admin")
 def pagina_admin():
+    if "usuario_logado" not in session:
+        return redirect("/login")
+    
     musicas = recuperar_musicas()
     # recuperando os generos 
     generos = recuperar_generos()
     return render_template("administracao.html", 
-                           musicas = musicas, 
-                           generos = generos )
+                                musicas = musicas, 
+                                generos = generos )
 
 
 @app.route("/musica/post", methods = ["POST"])
@@ -62,12 +68,38 @@ def pagina_cadastro ():
 def rota_cadastrar():
     usuario = request.form.get("usuario")
     senha = request.form.get("senha")
-    cadastro_usuario(usuario, senha)
-    return redirect("/cadastro")
+    cadastro = cadastro_usuario(usuario, senha)
+
+    if cadastro:
+        session["usuario_logado"] = usuario
+        return redirect("/admin")
+    else:
+        return redirect("/login")
+    
+@app.route("/usuario/login", methods=["POST"])
+def usuario_login():
+    usuario = request.form.get("usuario")
+    senha = request.form.get("senha")
+    login = verificar_usuario(usuario, senha)
+
+    if login != None:
+        session["usuario_logado"] = login
+        flash(f"Seja bem-vindo, {login.nome}", "sucess")
+        return redirect("/admin")
+    else:
+        flash("Usuário ou senha inválida!", "danger")
+        return redirect("/login")
 
 @app.route("/login")
 def pagina_login():
+    if "usuario_logado" in session:
+        return redirect("admin")
     return render_template("login.html")
+
+@app.route("/logoff")
+def logoff():
+    session.clear
+    return redirect("/")
 
 if __name__=="__main__":
     app.run(debug=True)

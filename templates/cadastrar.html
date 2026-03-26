@@ -1,106 +1,104 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #0d131d;
-            padding: 20px;
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #ffffff;
-
-        }
-
-        form {
-            background-color: #1a222f;
-            padding: 30px;
-            border-radius: 12px;
-            width: 100%;
-            max-width: 400px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        .form-group{
-            margin-bottom: 20px;
-        }
-
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #6366f1;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        button:hover {
-            background-color: #4f46e5;
-        }
-
-        label {
-            color: #ffffff;
-            display: flex;
-            flex-direction: unset;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-        }
-
-        input {
-            width: 100%;
-            padding: 12px;
-            background-color: #0d131d;
-            border: 1px solid #334155;
-            border-radius: 8px;
-            color: white;
-            outline: none;
-            transition: 0.2s;
-        }
-
-        input:focus {
-            border-color: #6366f1;
-            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
-        }
-    </style>
+    <title>Cadastro - SpotiDuck</title>
 </head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #0a0a0a;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #ffffff;
+
+    }
+
+    .form-group{
+        margin-bottom: 20px;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        background-color: #6366f1;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background-color: #4f46e5;
+    }
+
+    label {
+        color: #ffffff;
+        display: flex;
+        flex-direction: unset;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    }
+
+    input {
+        width: 100%;
+        padding: 12px;
+        background-color: #0d131d;
+        border: 1px solid #334155;
+        border-radius: 8px;
+        color: white;
+        outline: none;
+        transition: 0.2s;
+    }
+
+    input:focus {
+        border-color: #6366f1;
+        box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+    }
+</style>
 
 <body>
-    <h2>Bem Vindo, Cadastre-se!</h2>
-    <form action="/cadastro" method="POST">
-        <div class="form-group">
-            <label for="nome">Usuário:</label>
-            <input type="text" id="nome" name="usuario" required>
+    <section class="container__form">
+        <div class="header__form">
+            <h1>Bem vindo, cadastre-se</h1>
         </div>
+        <div class="body__form">
+            <form action="/usuario/cadastro" method="post">
+                <div class="form-group">
+                    <label for="usuario">Usuario:</label>
+                    <input type="text" id="usuario" name="usuario" placeholder="Digite seu usuario" required>
+                </div>
+                <div class="form-group">
+                    <label for="Senha">Senha:</label>
+                    <input type="text" id="senha" name="senha" placeholder="Digite seu usuario" required>
+                </div>
 
-        <div class="form-group">
-            <label for="senha">Senha:</label>
-            <input type="senha" id="senha" name="senha" required>
+                <button type="submit">Cadastrar</button>
+            </form>
         </div>
+        <div class="footer__form">
 
-        <button type="submit">Cadastrar</button>
-    </form>
-
+        </div>
+    </section>
 </body>
 
 </html>
