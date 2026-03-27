@@ -5,7 +5,7 @@ def recuperar_generos():
     conexao, cursor = conectar()
 
     # executando a conssulta
-    cursor.execute("select nome, icone, cor from genero;")
+    cursor.execute('select nome, icone, cor from genero;')
 
     generos = cursor.fetchall()
 

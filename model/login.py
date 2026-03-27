@@ -2,10 +2,10 @@ from database.conexao import conectar
 
 def verificar_usuario(login:str, senha:str) -> list:
     conexao, cursor = conectar()
-    cursor.execute("""
+    cursor.execute('''
                     SELECT usuario, senha FROM cadastro WHERE usuario = $s and senha = $s, 
 
-                    """,
+                    ''',
                     [login, senha]
                     )
     usuario = cursor.fetchone()

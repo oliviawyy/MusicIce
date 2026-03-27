@@ -5,18 +5,18 @@ def recuperar_musicas(ativos:bool=False):
     conexao, cursor = conectar()
 
     if ativos == False:
-        cursor.execute("""
+        cursor.execute('''
                        SELECT codigo, cantor, duracao, nome, img_capa, nome_genero, ativo 
                        FROM musica
                        ;
-                       """)
+                       ''')
 
     else:
-        cursor.execute("""
+        cursor.execute('''
                        SELECT codigo, cantor, duracao, nome, img_capa, nome_genero, ativo 
                        FROM musica
                        WHERE ativo = 1;
-                       """)
+                       ''')
 
     musicas = cursor.fetchall()
 
@@ -26,21 +26,21 @@ def recuperar_musicas(ativos:bool=False):
 
 
 def salvar_musica(cantor:str, nome_musica:str, duracao:str, imagem:str, genero:str) -> bool:
-    """
+    '''
     eu adiciono a sua musica no banco de dados
-    """
+    '''
 
     try:
         # conectando ao banco
         conexao, cursor = conectar()
 
         # executar insert
-        cursor.execute("""
+        cursor.execute('''
                             INSERT INTO musica
                                 (cantor, nome, duracao, img_capa, nome_genero)
                             VALUES
                                 (%s, %s, %s, %s, %s);
-                        """,
+                        ''',
                         [cantor, nome_musica, duracao, imagem, genero]
                         )
         
@@ -56,15 +56,15 @@ def salvar_musica(cantor:str, nome_musica:str, duracao:str, imagem:str, genero:s
     
 
 def excluir_musica(codigo:int) -> bool:
-    """Essa função serve para excluir a musica"""
+    '''Essa função serve para excluir a musica'''
     try:
         conexao, cursor = conectar()
 
-        cursor.execute("""
+        cursor.execute('''
         DELETE FROM musica
         WHERE codigo = %s
                        
-        """, 
+        ''', 
         [codigo])
         conexao.commit()
 
@@ -77,15 +77,15 @@ def excluir_musica(codigo:int) -> bool:
         return False
 
 def alterar_musica(codigo:int, status:bool):
-    """ essa funcao serve para alterar"""
+    ''' essa funcao serve para alterar'''
     try:
         conexao, cursor = conectar()
 
-        cursor.execute("""
+        cursor.execute('''
         UPDATE musica
         SET ativo = %s
         WHERE CODIGO = %s
-        """,
+        ''',
         [status,codigo])
         conexao.commit()
 
